@@ -1,0 +1,17 @@
+{
+  "name": "royal-merchandise",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "next": "9.0.8",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "semantic-ui-react": "^0.88.1"
+  }
+}
