@@ -3,6 +3,9 @@ import { Message, Form, Segment, Button, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 
 import catchErrors from '../utils/catchErrors';
+import baseUrl from '../utils/baseUrl';
+import axios from 'axios';
+import { handleLogin } from '../utils/auth';
 
 const INITIAL_STATE = {
 	name: '',
@@ -30,12 +33,15 @@ const signup = () => {
 		setUser((prevState) => ({ ...prevState, [name]: value }));
 	};
 
-	const handleSubmit = (evt) => {
+	const handleSubmit = async (evt) => {
 		evt.preventDefault();
 		try {
 			setError('');
 			setLoading(true);
-			console.log(user);
+			const url = `${baseUrl}/api/signup`;
+			const payload = { ...user };
+			const response = await axios.post(url, payload);
+			handleLogin(response.data);
 		} catch (err) {
 			catchErrors(err, setError);
 		} finally {
