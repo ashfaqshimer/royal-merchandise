@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import Header from './Header';
 import HeadContent from './HeadContent';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, user }) => {
 	return (
 		<>
 			<Head>
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
 				/>
 				<title>Royal Merchandise | Simply the Best!</title>
 			</Head>
-			<Header />
+			<Header user={user} />
 			<Container text>{children}</Container>
 		</>
 	);

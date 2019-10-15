@@ -14,10 +14,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.3",
     "next": "9.0.8",
+    "nookies": "^2.0.8",
     "nprogress": "^0.2.0",
     "react": "16.10.2",
     "react-dom": "16.10.2",
     "semantic-ui-react": "^0.88.1",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "validator": "^11.1.0"
   }
 }
