@@ -20,16 +20,16 @@ class MyApp extends App {
 				ctx.pathname === '/account' || ctx.pathname === '/create';
 			if (isProtectedRoute) {
 				redirectUser(ctx, '/signin');
-			} else {
-				try {
-					const payload = { headers: { Authorization: token } };
-					const url = `${baseUrl}/api/account`;
-					const response = await axios.get(url, payload);
-					const user = response.data;
-					pageProps.user = user;
-				} catch (error) {
-					console.error('Error getting current user', error);
-				}
+			}
+		} else {
+			try {
+				const payload = { headers: { Authorization: token } };
+				const url = `${baseUrl}/api/account`;
+				const response = await axios.get(url, payload);
+				const user = response.data;
+				pageProps.user = user;
+			} catch (error) {
+				console.error('Error getting current user', error);
 			}
 		}
 
