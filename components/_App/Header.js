@@ -4,13 +4,17 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 
+import { handleLogout } from '../../utils/auth';
+
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 const Header = ({ user }) => {
 	const router = useRouter();
-	console.log(user);
+	const isRoot = user && user.role === 'root';
+	const isAdmin = user && user.role === 'admin';
+	const isPermitted = isRoot || isAdmin;
 
 	const isActive = (route) => {
 		return route === router.pathname;
@@ -32,7 +36,7 @@ const Header = ({ user }) => {
 							<Icon name='cart' size='large' /> Cart
 						</Menu.Item>
 					</Link>
-					{user && (
+					{isPermitted && (
 						<Link href='/create'>
 							<Menu.Item header active={isActive('/create')}>
 								<Icon name='add square' size='large' /> Create
@@ -49,7 +53,7 @@ const Header = ({ user }) => {
 								</Menu.Item>
 							</Link>
 
-							<Menu.Item header>
+							<Menu.Item header onClick={handleLogout}>
 								<Icon name='sign out' size='large' /> Log Out
 							</Menu.Item>
 						</>
