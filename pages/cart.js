@@ -7,25 +7,25 @@ import CartItemList from '../components/Cart/CartItemList';
 import baseUrl from '../utils/baseUrl';
 import { parseCookies } from 'nookies';
 
-const cart = ({ products }) => {
-	console.log(products);
-	return (
-		<Segment>
-			<CartItemList />
-			<CartSummary />
-		</Segment>
-	);
+const cart = ({ products, user }) => {
+  console.log(products);
+  return (
+    <Segment>
+      <CartItemList products={products} user={user} />
+      <CartSummary products={products} />
+    </Segment>
+  );
 };
 
 cart.getInitialProps = async (ctx) => {
-	const { token } = parseCookies(ctx);
-	if (!token) {
-		return { products: [] };
-	}
-	const url = `${baseUrl}/api/cart`;
-	const payload = { headers: { Authorization: token } };
-	const response = await axios.get(url, payload);
-	return { products: response.data };
+  const { token } = parseCookies(ctx);
+  if (!token) {
+    return { products: [] };
+  }
+  const url = `${baseUrl}/api/cart`;
+  const payload = { headers: { Authorization: token } };
+  const response = await axios.get(url, payload);
+  return { products: response.data };
 };
 
 export default cart;
