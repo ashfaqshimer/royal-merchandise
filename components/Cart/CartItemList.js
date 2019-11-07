@@ -1,7 +1,7 @@
 import { Segment, Header, Icon, Button, Card, Item } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 
-const CartItemList = ({ products, user }) => {
+const CartItemList = ({ products, user, handleRemoveFromCart }) => {
   const router = useRouter();
 
   const mapCartProductsToItems = (products) => {
@@ -20,7 +20,7 @@ const CartItemList = ({ products, user }) => {
           basic
           icon='remove'
           floated='right'
-          onClick={console.log(p.product._id)}
+          onClick={() => handleRemoveFromCart(p.product._id)}
         />
       )
     }));
