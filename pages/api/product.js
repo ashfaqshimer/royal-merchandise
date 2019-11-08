@@ -30,7 +30,7 @@ const handleGetRequest = async (req, res) => {
     const product = await Product.findById(_id);
     res.status(200).json(product);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -64,7 +64,7 @@ const handleDeleteRequest = async (req, res) => {
     );
     res.status(204).json(product);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).send('Error deleting product');
   }
 };

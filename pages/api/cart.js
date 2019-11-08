@@ -67,7 +67,7 @@ const handlePutRequest = async (req, res) => {
     }
     res.status(200).send('Cart Updated');
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(403).send('Please login again');
   }
 };

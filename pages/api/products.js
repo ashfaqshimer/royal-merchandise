@@ -38,6 +38,6 @@ export default async (req, res) => {
 
     res.status(200).json({ products: paginatedProducts, totalPages });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };

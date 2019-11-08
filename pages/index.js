@@ -14,7 +14,6 @@ const Index = ({ products, totalPages }) => {
 };
 
 Index.getInitialProps = async (ctx) => {
-  console.log(ctx.query);
   const page = ctx.query.page ? ctx.query.page : '1';
   const size = 9;
   // fetch data on server

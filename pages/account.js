@@ -7,7 +7,6 @@ import axios from 'axios';
 import AccountPermissions from '../components/Account/AccountPermissions';
 
 const Account = ({ user, orders }) => {
-  console.log(orders);
   return (
     <div>
       <AccountHeader {...user} />

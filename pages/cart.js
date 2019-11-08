@@ -22,7 +22,6 @@ const cart = ({ products, user }) => {
       headers: { Authorization: token }
     };
     const response = await axios.delete(url, payload);
-    console.log(response);
     setCartProducts(response.data);
   };
 

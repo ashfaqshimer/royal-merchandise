@@ -5,24 +5,24 @@ import ProductAttributes from '../components/Product/ProductAttributes';
 import baseUrl from '../utils/baseUrl';
 
 const Product = ({ product, user }) => {
-	return (
-		<div>
-			<ProductSummary user={user} {...product} />
-			<ProductAttributes user={user} {...product} />
-		</div>
-	);
+  return (
+    <div>
+      <ProductSummary user={user} {...product} />
+      <ProductAttributes user={user} {...product} />
+    </div>
+  );
 };
 
 Product.getInitialProps = async ({ query: { _id } }) => {
-	try {
-		const url = `${baseUrl}/api/product`;
-		const payload = { params: { _id } };
-		const response = await axios.get(url, payload);
+  try {
+    const url = `${baseUrl}/api/product`;
+    const payload = { params: { _id } };
+    const response = await axios.get(url, payload);
 
-		return { product: response.data };
-	} catch (err) {
-		console.log(err);
-	}
+    return { product: response.data };
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export default Product;
