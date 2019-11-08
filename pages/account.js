@@ -4,6 +4,7 @@ import AccountOrders from '../components/Account/AccountOrders';
 import baseUrl from '../utils/baseUrl';
 import { parseCookies } from 'nookies';
 import axios from 'axios';
+import AccountPermissions from '../components/Account/AccountPermissions';
 
 const Account = ({ user, orders }) => {
   console.log(orders);
@@ -11,6 +12,7 @@ const Account = ({ user, orders }) => {
     <div>
       <AccountHeader {...user} />
       <AccountOrders orders={orders} />
+      {user.role === 'root' && <AccountPermissions />}
     </div>
   );
 };
